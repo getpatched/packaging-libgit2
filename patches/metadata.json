@@ -89,7 +89,7 @@
       "tests": [{
         "id": "CVE-2026-53586-redirect-credential-origin",
         "runner": "getpatched/platform:verification/regression.py",
-        "fixtures": [{"path": "tests/fixtures/redirect-auth.c", "sha256": "88ff4c74b6492dd33f0180925d94eaf9b7aad3261e2c03a8ba2e3b8d3b1a0af4"}],
+        "fixtures": [{"path": "tests/fixtures/redirect-auth.c", "sha256": "c03791ee5a41d4f1af7ecab4d4c6f674c9c896ee2aef341dd4de4a541ac95986"}],
         "baselineExpectation": "After redirecting to a second localhost origin, the vulnerable credential callback still receives the trusted original origin and returns a fixture-only Basic credential; the redirected server records that exact dummy credential.",
         "patchedExpectation": "After redirecting to a second localhost origin, the patched callback receives the redirected origin, rejects it as untrusted, and the redirected server observes no Authorization header."
       }]
