@@ -53,7 +53,7 @@
           "runner": "getpatched/platform:verification/regression.py",
           "fixtures": [
             {"path": "tests/fixtures/delta_100mb.pack", "sha256": "0fb0b832fa7481ae566b090c672d2d8c9788e285bf9736588e338922e5628f31"},
-            {"path": "tests/fixtures/pack-size-limit.c", "sha256": "1d5f37906995d6644806ba45794b22675de7317685f779de04ed8588f98a03ee"}
+            {"path": "tests/fixtures/pack-size-limit.c", "sha256": "4c02f6ebb1501872cfc612d948ea462d99505d38864dc20a8f5575c18d8bfe8a"}
           ],
           "baselineExpectation": "The exact installed baseline accepts the 150-byte pack carrying a declared 100 MiB delta result.",
           "patchedExpectation": "The exact installed patched package rejects the object at a 42 MiB configured cap before allocating the declared result."
