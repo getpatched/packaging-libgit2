@@ -18,7 +18,7 @@ The source descriptor and both source archives are pinned by SHA-256 in `targets
 - **CVE-2026-53585:** limits declared object sizes while unpacking untrusted pack data. The limit is checked before applying a pack delta; ordinary binary patch application remains independent of the pack limit.
 - **CVE-2026-53586:** passes the current redirected server URL to the credentials callback so applications can make the credential decision for the actual endpoint.
 
-Each patch is version scoped to the pinned Focal source, records its upstream commit and CVE in DEP-3 metadata, and has an associated regression fixture or test. **The patches and installed-package checks remain unverified; this repository does not claim the CVEs are fixed yet.** CVE-2026-53587 is excluded because the audited Focal implementation does not contain the affected object-format code.
+Each patch is version scoped to the pinned Focal source, records its upstream commit and CVE in DEP-3 metadata, and has an associated regression fixture or test. **The patches and installed-package checks remain unverified; this repository does not claim the CVEs are fixed yet.** CVE-2026-53587 is excluded for Focal: Canonical's [official record](https://ubuntu.com/security/CVE-2026-53587) marks Ubuntu 20.04 as not affected, consistent with the pinned `smart_pkt.c` source audit.
 
 The package version appends `+getpatched1` to the Ubuntu version. Additional patches on the same source increment the GetPatched serial; a different distro source version requires a separately pinned target and fresh verification.
 
