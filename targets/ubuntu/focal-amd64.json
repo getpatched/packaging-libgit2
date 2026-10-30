@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 2,
+  "id": "ubuntu-focal-amd64",
+  "base": {
+    "distribution": "Ubuntu",
+    "release": "20.04",
+    "codename": "focal",
+    "sourcePocket": "updates",
+    "architecture": "amd64"
+  },
+  "source": {
+    "format": "3.0 (quilt)",
+    "version": "0.28.4+dfsg.1-2ubuntu0.1",
+    "publication": "https://archive.ubuntu.com/ubuntu/pool/universe/libg/libgit2/libgit2_0.28.4+dfsg.1-2ubuntu0.1.dsc",
+    "publishedAt": "2024-03-05T19:09:00Z",
+    "descriptor": {
+      "name": "libgit2_0.28.4+dfsg.1-2ubuntu0.1.dsc",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libg/libgit2/libgit2_0.28.4+dfsg.1-2ubuntu0.1.dsc",
+      "sha256": "259c89491dbd17407b738316447c7afb0b7858478d39db3b194c92c40fad47a4",
+      "bytes": 2344
+    },
+    "files": [
+      {
+        "name": "libgit2_0.28.4+dfsg.1.orig.tar.xz",
+        "role": "upstream-source",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libg/libgit2/libgit2_0.28.4+dfsg.1.orig.tar.xz",
+        "sha256": "758517d1ff5124e732e999e2e50a501cb0d3c8bdcf64d1cec404ced6235c0bb7",
+        "bytes": 2798048
+      },
+      {
+        "name": "libgit2_0.28.4+dfsg.1-2ubuntu0.1.debian.tar.xz",
+        "role": "ubuntu-packaging",
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/libg/libgit2/libgit2_0.28.4+dfsg.1-2ubuntu0.1.debian.tar.xz",
+        "sha256": "8a3d388a52655ac0eb1437097b9cac150bc5052ac4fa44d98bb6d4d21c2e773d",
+        "bytes": 19016
+      }
+    ],
+    "signatureVerification": {
+      "verified": false,
+      "note": "The signed Ubuntu source index authenticates the descriptor and archive hashes; individual .dsc uploader signatures were not separately verified."
+    }
+  },
+  "supportedSourceVersions": ["0.28.4+dfsg.1-2ubuntu0.1"],
+  "packageVersion": "0.28.4+dfsg.1-2ubuntu0.1+getpatched1",
+  "releaseSerial": 1,
+  "changelog": {
+    "distribution": "focal",
+    "urgency": "medium",
+    "maintainer": "GetPatched Maintainers <packages@getpatched.dev>",
+    "date": "Fri, 30 Oct 2026 00:00:00 +0000"
+  },
+  "binaryPackages": ["libgit2-28", "libgit2-dev"],
+  "patches": [
+    "cve-2026-53584-focal",
+    "cve-2026-53585-focal",
+    "cve-2026-53586-focal"
+  ],
+  "releaseAccess": {
+    "policy": "public-after-checks",
+    "sponsorDelayHours": 0,
+    "sponsorEligibility": null,
+    "earlyBinaryLicenseId": null,
+    "publicContributionSpdx": "MIT",
+    "earlyUse": ["private", "commercial"],
+    "earlyRedistributionAllowed": false,
+    "publicLicenseScope": "getpatched-authored-contributions-only"
+  },
+  "status": "unreleased-development-candidate"
+}

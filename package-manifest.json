@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 3,
+  "project": {
+    "name": "GetPatched",
+    "repository": "getpatched/packaging-libgit2",
+    "description": "Target-specific libgit2 security maintenance recipe."
+  },
+  "package": {
+    "source": "libgit2",
+    "description": "A portable C implementation of Git core methods and APIs.",
+    "upstreamProject": "libgit2",
+    "upstreamRepository": "https://github.com/libgit2/libgit2",
+    "copyrightFile": "LICENSES/ubuntu-source-copyright"
+  },
+  "targets": [
+    {"id": "ubuntu-focal-amd64", "file": "targets/ubuntu/focal-amd64.json"}
+  ],
+  "patchMetadata": "patches/metadata.json",
+  "regressionTests": {
+    "fixturesDirectory": "tests/fixtures",
+    "runner": "getpatched/platform:verification/regression.py"
+  },
+  "licensing": {
+    "publicContributionsSpdx": "MIT",
+    "publicContributionsLicenseFile": "LICENSE",
+    "fileLicenses": [
+      {"path": "patches/CVE-2026-53584-focal.patch", "spdx": "GPL-2.0-or-later", "licenseFile": "LICENSES/upstream-COPYING"},
+      {"path": "patches/CVE-2026-53585-focal.patch", "spdx": "GPL-2.0-or-later", "licenseFile": "LICENSES/upstream-COPYING"},
+      {"path": "patches/CVE-2026-53586-focal.patch", "spdx": "GPL-2.0-or-later", "licenseFile": "LICENSES/upstream-COPYING"}
+    ],
+    "earlyBinaryLicenseId": null,
+    "earlyBinaryTermsFile": null,
+    "upstreamCopyrightFile": "LICENSES/upstream-COPYING",
+    "upstreamLicenses": "preserve"
+  }
+}

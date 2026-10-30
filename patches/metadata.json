@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 3,
+  "patches": [
+    {
+      "id": "cve-2026-53584-focal",
+      "kind": "security",
+      "file": "CVE-2026-53584-focal.patch",
+      "sha256": "02f3c48d40259466a97c44b4158d7f6f3589dbae791eb3f7a5796c887b835138",
+      "title": "Reject submodule filesystem paths outside the repository",
+      "license": "GPL-2.0-or-later",
+      "cves": ["CVE-2026-53584"],
+      "upstream": {
+        "repository": "https://github.com/libgit2/libgit2",
+        "commit": "419637d3587396f5d139d6d88480eab3cd81e7a1",
+        "url": "https://github.com/libgit2/libgit2/commit/419637d3587396f5d139d6d88480eab3cd81e7a1"
+      },
+      "appliesTo": [{"target": "ubuntu-focal-amd64", "sourceVersion": "0.28.4+dfsg.1-2ubuntu0.1"}],
+      "dep3": {
+        "origin": "Adapted from upstream commit 419637d3587396f5d139d6d88480eab3cd81e7a1 for libgit2 0.28.4.",
+        "forwarded": "https://github.com/libgit2/libgit2/commit/419637d3587396f5d139d6d88480eab3cd81e7a1",
+        "lastUpdate": "2026-10-30"
+      },
+      "tests": [{
+        "id": "CVE-2026-53584-submodule-path-escape",
+        "runner": "getpatched/platform:verification/regression.py",
+        "fixtures": [{"path": "tests/fixtures/submodule-path.c", "sha256": "380f4634410269ab18f2872183c222f3315e08dd6ef0766eb4cb17b3afeef969"}],
+        "baselineExpectation": "The exact installed baseline resolves the malicious submodule path and creates the configured subrepository outside its worktree, inside an isolated temporary parent.",
+        "patchedExpectation": "The exact installed patched package rejects the path with GIT_EINVALID and creates no directory outside its worktree."
+      }]
+    },
+    {
+      "id": "cve-2026-53585-focal",
+      "kind": "security",
+      "file": "CVE-2026-53585-focal.patch",
+      "sha256": "ec131f411e8adf62b84f5a03d5975a886bc69ef85a83c54b5d11ce4cecf3158a",
+      "title": "Bound declared object size while unpacking pack data",
+      "license": "GPL-2.0-or-later",
+      "cves": ["CVE-2026-53585"],
+      "upstream": {
+        "repository": "https://github.com/libgit2/libgit2",
+        "commit": "c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae",
+        "url": "https://github.com/libgit2/libgit2/commit/c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae"
+      },
+      "appliesTo": [{"target": "ubuntu-focal-amd64", "sourceVersion": "0.28.4+dfsg.1-2ubuntu0.1"}],
+      "dep3": {
+        "origin": "Adapted from upstream commit c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae; the cap is checked in pack unpacking so binary patch APIs keep their prior behavior.",
+        "forwarded": "https://github.com/libgit2/libgit2/commit/c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae",
+        "lastUpdate": "2026-10-30"
+      },
+      "tests": [
+        {
+          "id": "CVE-2026-53585-pack-object-size",
+          "runner": "getpatched/platform:verification/regression.py",
+          "fixtures": [
+            {"path": "tests/fixtures/delta_100mb.pack", "sha256": "0fb0b832fa7481ae566b090c672d2d8c9788e285bf9736588e338922e5628f31"},
+            {"path": "tests/fixtures/pack-size-limit.c", "sha256": "e6afab1580cbc92ffb8b76bf672fb5e937d19a5e8d3685db4731b890e2a2f8cb"}
+          ],
+          "baselineExpectation": "The exact installed baseline accepts the 150-byte pack carrying a declared 100 MiB delta result.",
+          "patchedExpectation": "The exact installed patched package rejects the object at a 42 MiB configured cap before allocating the declared result."
+        },
+        {
+          "id": "pack-limit-binary-patch-compatibility",
+          "runner": "libgit2 source test suite",
+          "fixtures": [],
+          "baselineExpectation": "Binary patch application succeeds with the default settings.",
+          "patchedExpectation": "A 16-byte binary patch succeeds while the pack object size cap is set to one byte."
+        }
+      ]
+    },
+    {
+      "id": "cve-2026-53586-focal",
+      "kind": "security",
+      "file": "CVE-2026-53586-focal.patch",
+      "sha256": "58d26adfe51215153e369416241dcfcfd100da1c52b9a9c71b0e65b0f23ee677",
+      "title": "Pass redirected server URL to the credential callback",
+      "license": "GPL-2.0-or-later",
+      "cves": ["CVE-2026-53586"],
+      "upstream": {
+        "repository": "https://github.com/libgit2/libgit2",
+        "commit": "c1507abc44647b3acd832a33a5b1c8c9f5ba8821",
+        "url": "https://github.com/libgit2/libgit2/commit/c1507abc44647b3acd832a33a5b1c8c9f5ba8821"
+      },
+      "appliesTo": [{"target": "ubuntu-focal-amd64", "sourceVersion": "0.28.4+dfsg.1-2ubuntu0.1"}],
+      "dep3": {
+        "origin": "Adapted from upstream commit c1507abc44647b3acd832a33a5b1c8c9f5ba8821 for the Focal HTTP transport.",
+        "forwarded": "https://github.com/libgit2/libgit2/commit/c1507abc44647b3acd832a33a5b1c8c9f5ba8821",
+        "lastUpdate": "2026-10-30"
+      },
+      "tests": [{
+        "id": "CVE-2026-53586-redirect-credential-origin",
+        "runner": "getpatched/platform:verification/regression.py",
+        "fixtures": [{"path": "tests/fixtures/redirect-auth.c", "sha256": "a88ed437a01882786990015cba50b5654bb9c05e016802fc4cc50955f09d27d9"}],
+        "baselineExpectation": "After a localhost HTTP redirect, the credentials callback receives the original endpoint's origin.",
+        "patchedExpectation": "After a localhost HTTP redirect, the credentials callback receives the redirected origin and the test sends no credentials."
+      }]
+    }
+  ]
+}
