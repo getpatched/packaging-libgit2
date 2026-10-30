@@ -23,7 +23,7 @@
       "tests": [{
         "id": "CVE-2026-53584-submodule-path-escape",
         "runner": "getpatched/platform:verification/regression.py",
-        "fixtures": [{"path": "tests/fixtures/submodule-path.c", "sha256": "cd78d28ef78f207eddb1f1709dc3ec830ac9c8fd07ec433be7141892dbb600e6"}],
+        "fixtures": [{"path": "tests/fixtures/submodule-path.c", "sha256": "90cc5673d8f54acf67f6bd0c6114a3598e2d634a47dfa9d7f58147f3a474dbf6"}],
         "baselineExpectation": "The exact installed baseline resolves the malicious submodule path and creates the configured subrepository outside its worktree, inside an isolated temporary parent.",
         "patchedExpectation": "The exact installed patched package rejects the path with GIT_EINVALID and creates no directory outside its worktree."
       }]
