@@ -33,6 +33,7 @@ int main(int argc, char **argv)
 		git_repository_free(repo);
 		return 1;
 	}
+	puts("result=rejected:invalid-submodule-path");
 #else
 	if (error < 0 || git_submodule_init(submodule, 0) < 0 ||
 	    git_submodule_repo_init(&subrepo, submodule, 1) < 0) {
@@ -40,6 +41,7 @@ int main(int argc, char **argv)
 		git_repository_free(repo);
 		return 1;
 	}
+	puts("result=created:escaped-submodule-directory");
 	git_repository_free(subrepo);
 #endif
 	git_submodule_free(submodule);

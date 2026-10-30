@@ -63,9 +63,11 @@ int main(int argc, char **argv)
 #ifdef GETPATCHED_PATCHED
 	if (!rejected_as_large)
 		return 1;
+	puts("result=rejected:overly-large-object");
 #else
 	if (error < 0)
 		return 1;
+	puts("result=accepted:large-object");
 #endif
 	return 0;
 }

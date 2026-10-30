@@ -5,7 +5,7 @@
       "id": "cve-2026-53584-focal",
       "kind": "security",
       "file": "CVE-2026-53584-focal.patch",
-      "sha256": "02f3c48d40259466a97c44b4158d7f6f3589dbae791eb3f7a5796c887b835138",
+      "sha256": "68fac34287ea839bf425864959c8a19a2b874c79a04af33ee51c5d1f2c31d216",
       "title": "Reject submodule filesystem paths outside the repository",
       "license": "GPL-2.0-or-later",
       "cves": ["CVE-2026-53584"],
@@ -23,7 +23,7 @@
       "tests": [{
         "id": "CVE-2026-53584-submodule-path-escape",
         "runner": "getpatched/platform:verification/regression.py",
-        "fixtures": [{"path": "tests/fixtures/submodule-path.c", "sha256": "380f4634410269ab18f2872183c222f3315e08dd6ef0766eb4cb17b3afeef969"}],
+        "fixtures": [{"path": "tests/fixtures/submodule-path.c", "sha256": "cd78d28ef78f207eddb1f1709dc3ec830ac9c8fd07ec433be7141892dbb600e6"}],
         "baselineExpectation": "The exact installed baseline resolves the malicious submodule path and creates the configured subrepository outside its worktree, inside an isolated temporary parent.",
         "patchedExpectation": "The exact installed patched package rejects the path with GIT_EINVALID and creates no directory outside its worktree."
       }]
@@ -53,7 +53,7 @@
           "runner": "getpatched/platform:verification/regression.py",
           "fixtures": [
             {"path": "tests/fixtures/delta_100mb.pack", "sha256": "0fb0b832fa7481ae566b090c672d2d8c9788e285bf9736588e338922e5628f31"},
-            {"path": "tests/fixtures/pack-size-limit.c", "sha256": "e6afab1580cbc92ffb8b76bf672fb5e937d19a5e8d3685db4731b890e2a2f8cb"}
+            {"path": "tests/fixtures/pack-size-limit.c", "sha256": "1d5f37906995d6644806ba45794b22675de7317685f779de04ed8588f98a03ee"}
           ],
           "baselineExpectation": "The exact installed baseline accepts the 150-byte pack carrying a declared 100 MiB delta result.",
           "patchedExpectation": "The exact installed patched package rejects the object at a 42 MiB configured cap before allocating the declared result."
@@ -89,7 +89,7 @@
       "tests": [{
         "id": "CVE-2026-53586-redirect-credential-origin",
         "runner": "getpatched/platform:verification/regression.py",
-        "fixtures": [{"path": "tests/fixtures/redirect-auth.c", "sha256": "a88ed437a01882786990015cba50b5654bb9c05e016802fc4cc50955f09d27d9"}],
+        "fixtures": [{"path": "tests/fixtures/redirect-auth.c", "sha256": "3cccd961b1e08e6a9b2141d4ae9a9ec47c30783c5f3b2946a4024607c2937366"}],
         "baselineExpectation": "After a localhost HTTP redirect, the credentials callback receives the original endpoint's origin.",
         "patchedExpectation": "After a localhost HTTP redirect, the credentials callback receives the redirected origin and the test sends no credentials."
       }]
