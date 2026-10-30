@@ -1,6 +1,6 @@
 #include <git2.h>
 #include <git2/clone.h>
-#include <git2/credential.h>
+#include <git2/transport.h>
 
 #include <stdio.h>
 #include <stdlib.h>
