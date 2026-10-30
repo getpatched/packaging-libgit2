@@ -32,7 +32,7 @@
       "id": "cve-2026-53585-focal",
       "kind": "security",
       "file": "CVE-2026-53585-focal.patch",
-      "sha256": "c20a0cf327963e8fc6407f9189527cbd3a3e7b5b94814eec1a902d14eaaea088",
+      "sha256": "683e33246d28ce13a20828cc7dc6468400ef16715bfbadc4a00efc740d3facf8",
       "title": "Bound declared object size while unpacking pack data",
       "license": "GPL-2.0-or-later",
       "cves": ["CVE-2026-53585"],
