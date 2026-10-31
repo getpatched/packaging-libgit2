@@ -13,7 +13,14 @@
     "copyrightFile": "LICENSES/ubuntu-source-copyright"
   },
   "targets": [
-    {"id": "ubuntu-focal-amd64", "file": "targets/ubuntu/focal-amd64.json"}
+    {
+      "id": "ubuntu-focal-amd64",
+      "file": "targets/ubuntu/focal-amd64.json"
+    },
+    {
+      "id": "ubuntu-jammy-amd64",
+      "file": "targets/ubuntu/jammy-amd64.json"
+    }
   ],
   "patchMetadata": "patches/metadata.json",
   "regressionTests": {
@@ -24,9 +31,36 @@
     "publicContributionsSpdx": "MIT",
     "publicContributionsLicenseFile": "LICENSE",
     "fileLicenses": [
-      {"path": "patches/CVE-2026-53584-focal.patch", "spdx": "GPL-2.0-or-later", "licenseFile": "LICENSES/upstream-COPYING"},
-      {"path": "patches/CVE-2026-53585-focal.patch", "spdx": "GPL-2.0-or-later", "licenseFile": "LICENSES/upstream-COPYING"},
-      {"path": "patches/CVE-2026-53586-focal.patch", "spdx": "GPL-2.0-or-later", "licenseFile": "LICENSES/upstream-COPYING"}
+      {
+        "path": "patches/CVE-2026-53584-focal.patch",
+        "spdx": "GPL-2.0-or-later",
+        "licenseFile": "LICENSES/upstream-COPYING"
+      },
+      {
+        "path": "patches/CVE-2026-53585-focal.patch",
+        "spdx": "GPL-2.0-or-later",
+        "licenseFile": "LICENSES/upstream-COPYING"
+      },
+      {
+        "path": "patches/CVE-2026-53586-focal.patch",
+        "spdx": "GPL-2.0-or-later",
+        "licenseFile": "LICENSES/upstream-COPYING"
+      },
+      {
+        "path": "patches/CVE-2026-53584-jammy.patch",
+        "spdx": "GPL-2.0-or-later",
+        "licenseFile": "LICENSES/upstream-COPYING"
+      },
+      {
+        "path": "patches/CVE-2026-53585-jammy.patch",
+        "spdx": "GPL-2.0-or-later",
+        "licenseFile": "LICENSES/upstream-COPYING"
+      },
+      {
+        "path": "patches/CVE-2026-53586-jammy.patch",
+        "spdx": "GPL-2.0-or-later",
+        "licenseFile": "LICENSES/upstream-COPYING"
+      }
     ],
     "earlyBinaryLicenseId": null,
     "earlyBinaryTermsFile": null,
