@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 2,
+  "id": "ubuntu-jammy-amd64",
+  "base": {
+    "distribution": "Ubuntu",
+    "release": "22.04",
+    "codename": "jammy",
+    "sourcePocket": "security",
+    "architecture": "amd64"
+  },
+  "source": {
+    "format": "3.0 (quilt)",
+    "version": "1.1.0+dfsg.1-4.1ubuntu0.1",
+    "publication": "https://snapshot.ubuntu.com/ubuntu/20261030T000000Z/pool/universe/libg/libgit2/libgit2_1.1.0+dfsg.1-4.1ubuntu0.1.dsc",
+    "publishedAt": "2024-02-28T07:11:53Z",
+    "descriptor": {
+      "name": "libgit2_1.1.0+dfsg.1-4.1ubuntu0.1.dsc",
+      "url": "https://snapshot.ubuntu.com/ubuntu/20261030T000000Z/pool/universe/libg/libgit2/libgit2_1.1.0+dfsg.1-4.1ubuntu0.1.dsc",
+      "sha256": "aa7c53c46bffac3cd0f79b3d02ef9a88b8b6758ad61cb7462dd9b90fd763fbb4",
+      "bytes": 2408
+    },
+    "files": [
+      {
+        "name": "libgit2_1.1.0+dfsg.1.orig.tar.xz",
+        "role": "upstream-source",
+        "url": "https://snapshot.ubuntu.com/ubuntu/20261030T000000Z/pool/universe/libg/libgit2/libgit2_1.1.0+dfsg.1.orig.tar.xz",
+        "sha256": "d3eba7909c5df1023c25a44ead8ee97cfc36da91a84ca50837d90f4521cf4e04",
+        "bytes": 2901284
+      },
+      {
+        "name": "libgit2_1.1.0+dfsg.1-4.1ubuntu0.1.debian.tar.xz",
+        "role": "ubuntu-packaging",
+        "url": "https://snapshot.ubuntu.com/ubuntu/20261030T000000Z/pool/universe/libg/libgit2/libgit2_1.1.0+dfsg.1-4.1ubuntu0.1.debian.tar.xz",
+        "sha256": "db97779ef0cfeb2d141a543bd778802f08eedbeba9f1ca16fcb112337d21b671",
+        "bytes": 20728
+      }
+    ],
+    "signatureVerification": {
+      "verified": false,
+      "note": "The signed Ubuntu jammy-security source index authenticates the descriptor and archive hashes; the individual .dsc uploader signature was not separately verified."
+    }
+  },
+  "supportedSourceVersions": [
+    "1.1.0+dfsg.1-4.1ubuntu0.1"
+  ],
+  "packageVersion": "1.1.0+dfsg.1-4.1ubuntu0.1+getpatched1",
+  "releaseSerial": 1,
+  "changelog": {
+    "distribution": "jammy",
+    "urgency": "medium",
+    "maintainer": "GetPatched Maintainers <packages@getpatched.dev>",
+    "date": "Sat, 31 Oct 2026 00:00:00 +0000"
+  },
+  "binaryPackages": [
+    "libgit2-1.1",
+    "libgit2-dev"
+  ],
+  "patches": [
+    "cve-2026-53584-jammy",
+    "cve-2026-53585-jammy",
+    "cve-2026-53586-jammy"
+  ],
+  "releaseAccess": {
+    "policy": "public-after-checks",
+    "sponsorDelayHours": 0,
+    "sponsorEligibility": null,
+    "earlyBinaryLicenseId": null,
+    "publicContributionSpdx": "MIT",
+    "earlyUse": [
+      "private",
+      "commercial"
+    ],
+    "earlyRedistributionAllowed": false,
+    "publicLicenseScope": "getpatched-authored-contributions-only"
+  },
+  "status": "unreleased-development-candidate"
+}

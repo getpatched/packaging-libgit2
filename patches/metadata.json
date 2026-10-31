@@ -8,40 +8,61 @@
       "sha256": "68fac34287ea839bf425864959c8a19a2b874c79a04af33ee51c5d1f2c31d216",
       "title": "Reject submodule filesystem paths outside the repository",
       "license": "GPL-2.0-or-later",
-      "cves": ["CVE-2026-53584"],
+      "cves": [
+        "CVE-2026-53584"
+      ],
       "upstream": {
         "repository": "https://github.com/libgit2/libgit2",
         "commit": "419637d3587396f5d139d6d88480eab3cd81e7a1",
         "url": "https://github.com/libgit2/libgit2/commit/419637d3587396f5d139d6d88480eab3cd81e7a1"
       },
-      "appliesTo": [{"target": "ubuntu-focal-amd64", "sourceVersion": "0.28.4+dfsg.1-2ubuntu0.1"}],
+      "appliesTo": [
+        {
+          "target": "ubuntu-focal-amd64",
+          "sourceVersion": "0.28.4+dfsg.1-2ubuntu0.1"
+        }
+      ],
       "dep3": {
         "origin": "Adapted from upstream commit 419637d3587396f5d139d6d88480eab3cd81e7a1 for libgit2 0.28.4.",
         "forwarded": "https://github.com/libgit2/libgit2/commit/419637d3587396f5d139d6d88480eab3cd81e7a1",
         "lastUpdate": "2026-10-30"
       },
-      "tests": [{
-        "id": "CVE-2026-53584-submodule-path-escape",
-        "runner": "getpatched/platform:verification/regression.py",
-        "fixtures": [{"path": "tests/fixtures/submodule-path.c", "sha256": "cd78d28ef78f207eddb1f1709dc3ec830ac9c8fd07ec433be7141892dbb600e6"}],
-        "baselineExpectation": "The exact installed baseline resolves the malicious submodule path and creates the configured subrepository outside its worktree, inside an isolated temporary parent.",
-        "patchedExpectation": "The exact installed patched package rejects the path with GIT_EINVALID and creates no directory outside its worktree."
-      }]
+      "tests": [
+        {
+          "id": "CVE-2026-53584-submodule-path-escape",
+          "runner": "getpatched/platform:verification/regression.py",
+          "fixtures": [
+            {
+              "path": "tests/fixtures/submodule-path.c",
+              "sha256": "90cc5673d8f54acf67f6bd0c6114a3598e2d634a47dfa9d7f58147f3a474dbf6"
+            }
+          ],
+          "baselineExpectation": "The exact installed baseline resolves the malicious submodule path and creates the configured subrepository outside its worktree, inside an isolated temporary parent.",
+          "patchedExpectation": "The exact installed patched package rejects the path with GIT_EINVALID and creates no directory outside its worktree."
+        }
+      ]
     },
     {
       "id": "cve-2026-53585-focal",
       "kind": "security",
       "file": "CVE-2026-53585-focal.patch",
-      "sha256": "ec131f411e8adf62b84f5a03d5975a886bc69ef85a83c54b5d11ce4cecf3158a",
+      "sha256": "2063f9e1442d693a738acffa7ac9a491daa71b2f2fd322e18e96954c24dcac0c",
       "title": "Bound declared object size while unpacking pack data",
       "license": "GPL-2.0-or-later",
-      "cves": ["CVE-2026-53585"],
+      "cves": [
+        "CVE-2026-53585"
+      ],
       "upstream": {
         "repository": "https://github.com/libgit2/libgit2",
         "commit": "c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae",
         "url": "https://github.com/libgit2/libgit2/commit/c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae"
       },
-      "appliesTo": [{"target": "ubuntu-focal-amd64", "sourceVersion": "0.28.4+dfsg.1-2ubuntu0.1"}],
+      "appliesTo": [
+        {
+          "target": "ubuntu-focal-amd64",
+          "sourceVersion": "0.28.4+dfsg.1-2ubuntu0.1"
+        }
+      ],
       "dep3": {
         "origin": "Adapted from upstream commit c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae; the cap is checked in pack unpacking so binary patch APIs keep their prior behavior.",
         "forwarded": "https://github.com/libgit2/libgit2/commit/c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae",
@@ -52,8 +73,14 @@
           "id": "CVE-2026-53585-pack-object-size",
           "runner": "getpatched/platform:verification/regression.py",
           "fixtures": [
-            {"path": "tests/fixtures/delta_100mb.pack", "sha256": "0fb0b832fa7481ae566b090c672d2d8c9788e285bf9736588e338922e5628f31"},
-            {"path": "tests/fixtures/pack-size-limit.c", "sha256": "1d5f37906995d6644806ba45794b22675de7317685f779de04ed8588f98a03ee"}
+            {
+              "path": "tests/fixtures/delta_100mb.pack",
+              "sha256": "0fb0b832fa7481ae566b090c672d2d8c9788e285bf9736588e338922e5628f31"
+            },
+            {
+              "path": "tests/fixtures/pack-size-limit.c",
+              "sha256": "4c02f6ebb1501872cfc612d948ea462d99505d38864dc20a8f5575c18d8bfe8a"
+            }
           ],
           "baselineExpectation": "The exact installed baseline accepts the 150-byte pack carrying a declared 100 MiB delta result.",
           "patchedExpectation": "The exact installed patched package rejects the object at a 42 MiB configured cap before allocating the declared result."
@@ -74,25 +101,173 @@
       "sha256": "58d26adfe51215153e369416241dcfcfd100da1c52b9a9c71b0e65b0f23ee677",
       "title": "Pass redirected server URL to the credential callback",
       "license": "GPL-2.0-or-later",
-      "cves": ["CVE-2026-53586"],
+      "cves": [
+        "CVE-2026-53586"
+      ],
       "upstream": {
         "repository": "https://github.com/libgit2/libgit2",
         "commit": "c1507abc44647b3acd832a33a5b1c8c9f5ba8821",
         "url": "https://github.com/libgit2/libgit2/commit/c1507abc44647b3acd832a33a5b1c8c9f5ba8821"
       },
-      "appliesTo": [{"target": "ubuntu-focal-amd64", "sourceVersion": "0.28.4+dfsg.1-2ubuntu0.1"}],
+      "appliesTo": [
+        {
+          "target": "ubuntu-focal-amd64",
+          "sourceVersion": "0.28.4+dfsg.1-2ubuntu0.1"
+        }
+      ],
       "dep3": {
         "origin": "Adapted from upstream commit c1507abc44647b3acd832a33a5b1c8c9f5ba8821 for the Focal HTTP transport.",
         "forwarded": "https://github.com/libgit2/libgit2/commit/c1507abc44647b3acd832a33a5b1c8c9f5ba8821",
         "lastUpdate": "2026-10-30"
       },
-      "tests": [{
-        "id": "CVE-2026-53586-redirect-credential-origin",
-        "runner": "getpatched/platform:verification/regression.py",
-        "fixtures": [{"path": "tests/fixtures/redirect-auth.c", "sha256": "3cccd961b1e08e6a9b2141d4ae9a9ec47c30783c5f3b2946a4024607c2937366"}],
-        "baselineExpectation": "After a localhost HTTP redirect, the credentials callback receives the original endpoint's origin.",
-        "patchedExpectation": "After a localhost HTTP redirect, the credentials callback receives the redirected origin and the test sends no credentials."
-      }]
+      "tests": [
+        {
+          "id": "CVE-2026-53586-redirect-credential-origin",
+          "runner": "getpatched/platform:verification/regression.py",
+          "fixtures": [
+            {
+              "path": "tests/fixtures/redirect-auth.c",
+              "sha256": "c03791ee5a41d4f1af7ecab4d4c6f674c9c896ee2aef341dd4de4a541ac95986"
+            }
+          ],
+          "baselineExpectation": "After redirecting to a second localhost origin, the vulnerable credential callback still receives the trusted original origin and returns a fixture-only Basic credential; the redirected server records that exact dummy credential.",
+          "patchedExpectation": "After redirecting to a second localhost origin, the patched callback receives the redirected origin, rejects it as untrusted, and the redirected server observes no Authorization header."
+        }
+      ]
+    },
+    {
+      "id": "cve-2026-53584-jammy",
+      "kind": "security",
+      "file": "CVE-2026-53584-jammy.patch",
+      "sha256": "c1b7d2ba4829ed3d4e611057f1bc3a738dfab38ef9bfab63f6d42de948ceb78f",
+      "title": "Reject submodule filesystem paths outside the repository",
+      "license": "GPL-2.0-or-later",
+      "cves": [
+        "CVE-2026-53584"
+      ],
+      "upstream": {
+        "repository": "https://github.com/libgit2/libgit2",
+        "commit": "419637d3587396f5d139d6d88480eab3cd81e7a1",
+        "url": "https://github.com/libgit2/libgit2/commit/419637d3587396f5d139d6d88480eab3cd81e7a1"
+      },
+      "appliesTo": [
+        {
+          "target": "ubuntu-jammy-amd64",
+          "sourceVersion": "1.1.0+dfsg.1-4.1ubuntu0.1"
+        }
+      ],
+      "dep3": {
+        "origin": "Adapted from upstream commit 419637d3587396f5d139d6d88480eab3cd81e7a1 for libgit2 1.1.0 on Ubuntu Jammy.",
+        "forwarded": "https://github.com/libgit2/libgit2/commit/419637d3587396f5d139d6d88480eab3cd81e7a1",
+        "lastUpdate": "2026-10-31"
+      },
+      "tests": [
+        {
+          "id": "CVE-2026-53584-submodule-path-escape-jammy",
+          "runner": "getpatched/platform:verification/regression.py",
+          "fixtures": [
+            {
+              "path": "tests/fixtures/submodule-path.c",
+              "sha256": "90cc5673d8f54acf67f6bd0c6114a3598e2d634a47dfa9d7f58147f3a474dbf6"
+            }
+          ],
+          "baselineExpectation": "The exact installed Jammy baseline resolves the malicious submodule path and creates the configured subrepository outside its worktree, inside an isolated temporary parent.",
+          "patchedExpectation": "The exact installed patched Jammy package rejects the path with GIT_EINVALID and creates no directory outside its worktree."
+        }
+      ]
+    },
+    {
+      "id": "cve-2026-53585-jammy",
+      "kind": "security",
+      "file": "CVE-2026-53585-jammy.patch",
+      "sha256": "ff7eadf3c6778c7162196638082a1da0973437eca32429264a054372b79a7575",
+      "title": "Bound declared object size while unpacking pack data",
+      "license": "GPL-2.0-or-later",
+      "cves": [
+        "CVE-2026-53585"
+      ],
+      "upstream": {
+        "repository": "https://github.com/libgit2/libgit2",
+        "commit": "c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae",
+        "url": "https://github.com/libgit2/libgit2/commit/c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae"
+      },
+      "appliesTo": [
+        {
+          "target": "ubuntu-jammy-amd64",
+          "sourceVersion": "1.1.0+dfsg.1-4.1ubuntu0.1"
+        }
+      ],
+      "dep3": {
+        "origin": "Adapted from upstream commit c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae for libgit2 1.1.0 on Ubuntu Jammy.",
+        "forwarded": "https://github.com/libgit2/libgit2/commit/c1896f06df22cc0ca5658df3a8f6cd7ede4cd6ae",
+        "lastUpdate": "2026-10-31"
+      },
+      "tests": [
+        {
+          "id": "CVE-2026-53585-pack-object-size-jammy",
+          "runner": "getpatched/platform:verification/regression.py",
+          "fixtures": [
+            {
+              "path": "tests/fixtures/delta_100mb.pack",
+              "sha256": "0fb0b832fa7481ae566b090c672d2d8c9788e285bf9736588e338922e5628f31"
+            },
+            {
+              "path": "tests/fixtures/pack-size-limit.c",
+              "sha256": "4c02f6ebb1501872cfc612d948ea462d99505d38864dc20a8f5575c18d8bfe8a"
+            }
+          ],
+          "baselineExpectation": "The exact installed Jammy baseline accepts the 150-byte pack carrying a declared 100 MiB delta result.",
+          "patchedExpectation": "The exact installed patched Jammy package rejects the object at a 42 MiB configured cap before allocating the declared result."
+        },
+        {
+          "id": "pack-limit-binary-patch-compatibility-jammy",
+          "runner": "libgit2 source test suite",
+          "fixtures": [],
+          "baselineExpectation": "Binary patch application succeeds with the default settings.",
+          "patchedExpectation": "A 16-byte binary patch succeeds while the pack object size cap is set to one byte."
+        }
+      ]
+    },
+    {
+      "id": "cve-2026-53586-jammy",
+      "kind": "security",
+      "file": "CVE-2026-53586-jammy.patch",
+      "sha256": "94e8fb4eea04e5a22cf544f94679d3628168780094100b7c08373a56619c25a1",
+      "title": "Pass redirected server URL to the credential callback",
+      "license": "GPL-2.0-or-later",
+      "cves": [
+        "CVE-2026-53586"
+      ],
+      "upstream": {
+        "repository": "https://github.com/libgit2/libgit2",
+        "commit": "c1507abc44647b3acd832a33a5b1c8c9f5ba8821",
+        "url": "https://github.com/libgit2/libgit2/commit/c1507abc44647b3acd832a33a5b1c8c9f5ba8821"
+      },
+      "appliesTo": [
+        {
+          "target": "ubuntu-jammy-amd64",
+          "sourceVersion": "1.1.0+dfsg.1-4.1ubuntu0.1"
+        }
+      ],
+      "dep3": {
+        "origin": "Adapted from upstream commit c1507abc44647b3acd832a33a5b1c8c9f5ba8821 for libgit2 1.1.0 on Ubuntu Jammy.",
+        "forwarded": "https://github.com/libgit2/libgit2/commit/c1507abc44647b3acd832a33a5b1c8c9f5ba8821",
+        "lastUpdate": "2026-10-31"
+      },
+      "tests": [
+        {
+          "id": "CVE-2026-53586-redirect-credential-origin-jammy",
+          "runner": "getpatched/platform:verification/regression.py",
+          "fixtures": [
+            {
+              "path": "tests/fixtures/redirect-auth.c",
+              "sha256": "c03791ee5a41d4f1af7ecab4d4c6f674c9c896ee2aef341dd4de4a541ac95986"
+            }
+          ],
+          "baselineExpectation": "After redirecting to a second localhost origin, the vulnerable credential callback still receives the trusted original origin and returns a fixture-only Basic credential; the redirected server records that exact dummy credential.",
+          "patchedExpectation": "After redirecting to a second localhost origin, the patched callback receives the redirected origin, rejects it as untrusted, and the redirected server observes no Authorization header."
+        }
+      ]
     }
   ]
 }
