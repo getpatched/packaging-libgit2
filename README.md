@@ -6,8 +6,8 @@ This repository contains public recipes for backporting selected libgit2 securit
 
 | Distribution | Architecture | Source version | Candidate version | Status |
 | --- | --- | --- | --- | --- |
-| Ubuntu Focal | amd64 | `0.28.4+dfsg.1-2ubuntu0.1` | `0.28.4+dfsg.1-2ubuntu0.1+getpatched1` | Development verified; production release pending |
-| Ubuntu Jammy | amd64 | `1.1.0+dfsg.1-4.1ubuntu0.1` | `1.1.0+dfsg.1-4.1ubuntu0.1+getpatched1` | Unverified development candidate |
+| Ubuntu Focal | amd64 | `0.28.4+dfsg.1-2ubuntu0.1` | `0.28.4+dfsg.1-2ubuntu0.1+getpatched1` | Hosted technical checks passed; candidate policy promotion and PR gates pending |
+| Ubuntu Jammy | amd64 | `1.1.0+dfsg.1-4.1ubuntu0.1` | `1.1.0+dfsg.1-4.1ubuntu0.1+getpatched1` | Development verified; production release pending |
 
 Debian Bookworm and Trixie are excluded because their current public source packages include fixes for the three selected CVEs. Ubuntu Noble and Resolute are excluded because their public source packages already include the selected fixes. Only amd64 is declared; arm64 needs its own real build, scan, and clean-client verification. Both targets use public Ubuntu source packages and never use Ubuntu Pro or ESM source packages.
 
@@ -19,7 +19,7 @@ Each source descriptor and both source archives are pinned by SHA-256 in its tar
 - **CVE-2026-53585:** limits declared object sizes while unpacking untrusted pack data. The limit is checked before applying a pack delta; ordinary binary patch application remains independent of the pack limit.
 - **CVE-2026-53586:** passes the current redirected server URL to the credentials callback so applications can make the credential decision for the actual endpoint.
 
-Each patch is target-scoped to its pinned Ubuntu source version, records its upstream commit and CVE in DEP-3 metadata, and has an associated regression fixture or test. The Focal candidate passed hosted development verification (run 41144391227); the Jammy recipe is new and remains unverified. No Jammy fix claim is made until its exact installed package checks and scans pass. CVE-2026-53587 is excluded for Focal and Jammy: Canonical's [official record](https://ubuntu.com/security/CVE-2026-53587) marks both releases as not affected. CVE-2026-5917 is a separate issue whose Ubuntu fixes for Focal and Jammy are ESM-only; it is outside this selected three-CVE patch set and is not claimed fixed here.
+Each patch is target-scoped to its pinned Ubuntu source version, records its upstream commit and CVE in DEP-3 metadata, and has an associated regression fixture or test. The Focal hosted technical verification is run [41142564467](https://github.com/getpatched/platform/actions/runs/41142564467); it reports successful installed baseline/patched regressions, package-aware scans, and isolated signed APT checks, but `candidateVerified=false` under its unpromoted candidate policy. Jammy hosted verification is run [41167536831](https://github.com/getpatched/platform/actions/runs/41167536831); its retained reports show all exact installed regressions, package-aware scans, build/package tests, compatibility, and signed APT checks passed, with `candidateVerified=true`. The Jammy package PR remains open pending independent review and merge. For both targets, production publication is disabled; raw Trivy 0.70 reports the three CVEs against candidate packages and is not considered a clean scan. CVE-2026-53587 is excluded for Focal and Jammy: Canonical's [official record](https://ubuntu.com/security/CVE-2026-53587) marks both releases as not affected. CVE-2026-5917 is a separate issue whose Ubuntu fixes for Focal and Jammy are ESM-only; it is outside this selected three-CVE patch set and is not claimed fixed here.
 
 The package version appends `+getpatched1` to the Ubuntu version. Additional patches on the same source increment the GetPatched serial; a different distro source version requires a separately pinned target and fresh verification.
 
