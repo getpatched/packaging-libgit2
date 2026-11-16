@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 {
 	git_indexer *indexer = NULL;
 	git_indexer_options options = GIT_INDEXER_OPTIONS_INIT;
-	git_indexer_progress progress = { 0 };
+	git_transfer_progress progress = { 0 };
 	char *pack = NULL;
 	size_t pack_size = 0;
 	int error;

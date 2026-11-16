@@ -1,0 +1,25 @@
+name: Package CI
+
+on:
+  pull_request:
+  merge_group:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 5 * * 2'
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    if: github.event_name != 'schedule'
+    uses: getpatched/actions/.github/workflows/package-ci.yml@203fa479f46799d79e1516d183bf64eaf2ebaa6c
+    with:
+      tooling_ref: 203fa479f46799d79e1516d183bf64eaf2ebaa6c
+      paired_scan: true
+  drift:
+    if: github.event_name == 'schedule'
+    uses: getpatched/actions/.github/workflows/package-ci.yml@47349b9f62ff72edef167edd75e3ee118b023287
+    with:
+      tooling_ref: 47349b9f62ff72edef167edd75e3ee118b023287
+      drift: true

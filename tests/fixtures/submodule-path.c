@@ -5,7 +5,10 @@
 
 int main(int argc, char **argv)
 {
-	git_repository *repo = NULL, *subrepo = NULL;
+	git_repository *repo = NULL;
+#ifndef GETPATCHED_PATCHED
+	git_repository *subrepo = NULL;
+#endif
 	git_submodule *submodule = NULL;
 	FILE *config;
 	char config_path[4096];
