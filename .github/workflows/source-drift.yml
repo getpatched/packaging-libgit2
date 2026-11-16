@@ -1,0 +1,24 @@
+name: Source drift
+
+on:
+  pull_request:
+    paths: [".github/workflows/source-drift.yml"]
+  schedule:
+    - cron: '41 5 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  drift:
+    name: Drift (${{ matrix.branch }})
+    strategy:
+      fail-fast: false
+      matrix:
+        branch: ["getpatched/focal", "getpatched/jammy"]
+    uses: getpatched/actions/.github/workflows/package-ci.yml@760af289a4398e9a439ee11afd145fce32d65753
+    with:
+      tooling_ref: 760af289a4398e9a439ee11afd145fce32d65753
+      drift: true
+      recipe_ref: refs/heads/${{ matrix.branch }}
