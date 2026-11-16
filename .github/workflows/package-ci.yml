@@ -6,7 +6,6 @@ on:
   workflow_dispatch:
     inputs:
       drift:
-    name: Drift (${{ matrix.branch }})
         description: Check source and dependency drift
         type: boolean
         default: false
