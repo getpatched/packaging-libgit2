@@ -29,3 +29,5 @@ Before release, the hosted workflow must build the actual Ubuntu source and bina
 ## Licensing
 
 The MIT license in `LICENSE` covers only GetPatched-authored recipe metadata, tests, and documentation. libgit2 and the adapted security patches retain upstream copyright and GPL licensing with the libgit2 linking exception, recorded in `LICENSES/upstream-COPYING`; Ubuntu packaging notices are preserved in `LICENSES/ubuntu-source-copyright`. Binary and source releases must preserve all upstream and distro license notices.
+
+[![advertisement](https://ads.servead.net/i/e5651fc6-4acd-4255-884b-4a95af03d376.svg)](https://ads.servead.net/c/e5651fc6-4acd-4255-884b-4a95af03d376)
